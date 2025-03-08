@@ -1,0 +1,45 @@
+<!-- profile.html - User Profile & Scanning Dashboard -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/scan.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, <span id="username"></span></h2>
+        <p><strong>Role:</strong> <span id="role"></span></p>
+        <p><strong>Credits:</strong> <span id="credits"></span></p>
+        
+        <h3>Upload Document for Scanning</h3>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="document" accept=".txt" required>
+            <button type="submit">Upload & Scan</button>
+        </form>
+        
+        <h3>Matching Results</h3>
+        <ul id="matchResults"></ul>
+        
+        <h3>Past Scans</h3>
+        <ul id="scanHistory"></ul>
+        
+        <h3>Credit Requests</h3>
+        <ul id="creditRequests"></ul>
+        
+        <a href="credit-request.html">Request More Credits</a>
+        <button onclick="logout()">Logout</button>
+    </div>
+    
+    <script src="../js/profile.js"></script>
+    <script src="../js/scan.js"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
