@@ -1,6 +1,12 @@
+const token = localStorage.getItem("token");
+if (!token) {
+    window.location.href = "index.html";
+}
+
 document.getElementById("creditRequestForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const amount = document.getElementById("creditAmount").value;
+    
     const response = await fetch("http://localhost:8000/api/credits/request", {
         method: "POST",
         headers: {
@@ -9,11 +15,12 @@ document.getElementById("creditRequestForm")?.addEventListener("submit", async (
         },
         body: JSON.stringify({ amount })
     });
+    
     const data = await response.json();
     if (response.ok) {
         alert("Credit request submitted successfully!");
-        location.reload();
+        window.location.href = "user-dashboard.html";
     } else {
-        alert("Failed to request credits");
+        alert("Request failed: " + data.message);
     }
 });

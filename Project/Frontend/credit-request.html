@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Credits</title>
-    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
     <div class="container">
         <h2>Request Additional Credits</h2>
         <form id="creditRequestForm">
-            <input type="number" id="creditAmount" placeholder="Enter amount" required>
+            <label for="creditAmount">Enter Amount:</label>
+            <input type="number" id="creditAmount" min="1" required>
             <button type="submit">Request Credits</button>
         </form>
+        <a href="user-dashboard.html">Back to Dashboard</a>
     </div>
-    <script src="../js/credit.js"></script>
+    <script src="js/credit.js"></script>
 </body>
 </html>

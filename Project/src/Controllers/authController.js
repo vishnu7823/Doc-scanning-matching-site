@@ -45,8 +45,12 @@ const userlogin = async(req,res)=>{
                 return res.status(400).json({message:'invalid password'}) //check the pass is valid
             }
 
-            const token = jwt.sign({id:user.id,username:user.username},SECRET_KEY,{expiresIn:"24h"}); //if both are valid creates a JWT token for login autheication and authorization
-            res.json({token});
+            const token = jwt.sign({id:user.id,username:user.username,role: user.role},SECRET_KEY,{expiresIn:"24h"}); //if both are valid creates a JWT token for login autheication and authorization
+            res.json({
+                message: "Login successful",
+                token: token,
+                role: user.role
+            });
 
         }
     )

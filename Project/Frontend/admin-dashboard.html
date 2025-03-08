@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
     <div class="container">
@@ -20,6 +21,7 @@
             </thead>
             <tbody id="creditRequests"></tbody>
         </table>
+        
         <h3>User Analytics</h3>
         <table>
             <thead>
@@ -31,7 +33,18 @@
             </thead>
             <tbody id="userStats"></tbody>
         </table>
+        
+        <button onclick="logout()">Logout</button>
     </div>
-    <script src="../js/admin.js"></script>
+    
+    <script src="js/auth.js"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
+            window.location.href = "index.html";
+        }
+    </script>
+    <script src="js/admin.js"></script>
 </body>
 </html>

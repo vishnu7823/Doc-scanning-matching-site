@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Dashboard</title>
-    <link rel="stylesheet" href="../css/profile.css">
-    <link rel="stylesheet" href="../css/scan.css">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
     <div class="container">
@@ -26,19 +25,19 @@
         <ul id="scanHistory"></ul>
         
         <h3>Credit Requests</h3>
-        <ul id="creditRequests"></ul>
-        
         <a href="credit-request.html">Request More Credits</a>
+        
         <button onclick="logout()">Logout</button>
     </div>
     
-    <script src="../js/profile.js"></script>
-    <script src="../js/scan.js"></script>
+    <script src="js/user.js"></script>
     <script>
         function logout() {
             localStorage.removeItem("token");
-            window.location.href = "login.html";
+            localStorage.removeItem("role");
+            window.location.href = "index.html";
         }
     </script>
+   <script src="js/scan.js"></script>
 </body>
 </html>

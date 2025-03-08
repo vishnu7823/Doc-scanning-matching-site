@@ -52,26 +52,26 @@ const uploadDocument = async(req,res)=>{
 
 
 
-const matchDocument = async (req, res) => {
+const matchDocumentAPI = async (req, res) => {  // ✅ Renamed Function
     const docId = req.params.docId;
 
-    // Get the uploaded document content
     db.get(`SELECT content FROM documents WHERE id = ?`, [docId], async (err, doc) => {
         if (err || !doc) {
             return res.status(404).json({ message: "Document not found" });
         }
+        console.log("Uploaded Document Content:", doc.content);
 
-        // Get all other stored documents for comparison
         db.all(`SELECT content FROM documents WHERE id != ?`, [docId], async (err, docs) => {
             if (err || !docs.length) {
                 return res.status(404).json({ message: "No matching documents found" });
             }
 
-            // Extract content of stored documents
             const storedDocs = docs.map(d => d.content);
+            console.log("Stored Documents for Matching:", storedDocs);
 
-            // Use AI to find the most similar document
+            // **Use AI to Find the Most Similar Document**
             const result = await matchDocuments(doc.content, storedDocs);
+            console.log("Matching Results:", result);
 
             res.json({ matches: result });
         });
@@ -79,8 +79,24 @@ const matchDocument = async (req, res) => {
 };
 
 
+const getUserPastScans = (req, res) => {
+    const userId = req.user.id;
+
+    db.all(
+        `SELECT id, filename FROM documents WHERE user_id = ? ORDER BY id DESC LIMIT 10`, 
+        [userId], 
+        (err, scans) => {
+            if (err) {
+                return res.status(500).json({ message: "Error fetching scan history" });
+            }
+            res.json({ scans });
+        }
+    );
+};
 
 
 
-module.exports =  {matchDocument,uploadDocument};
+
+
+module.exports =  {matchDocumentAPI,uploadDocument,getUserPastScans};
 

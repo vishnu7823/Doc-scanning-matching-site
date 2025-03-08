@@ -4,29 +4,27 @@ const { userlogin } = require('./authController');
 
 
 //reduce credit per scan
-const reduceCredits = async(req,res)=>{
-
+const reduceCredits = (req, res, next) => {
     const userId = req.user.id;
 
-    db.get(`SELECT credits FROM users WHERE id = ?`,[userId],(err,user)=>{
-
-        if(err || !user){
-            return res.status(404).json({message:"user not found"});
+    db.get(`SELECT credits FROM users WHERE id = ?`, [userId], (err, user) => {
+        if (err || !user) {
+            return res.status(404).json({ message: "User not found" });
         }
 
-        if(user.credits <=0){
-            return res.status(403).json({message:"insuffcient credits"})
+        if (user.credits <= 0) {
+            return res.status(403).json({ message: "Insufficient credits" });
         }
 
-        db.run(`UPDATE users SET credits = credits - 1 WHERE id=?`,[userId],(err)=>{
-            if(err){
-                return res.status(403).json({message:"failed to reduce"})
+        db.run(`UPDATE users SET credits = credits - 1 WHERE id = ?`, [userId], (err) => {
+            if (err) {
+                return res.status(500).json({ message: "Failed to reduce credits" });
             }
-            next();
-        })
-    })
-
-}
+            console.log(`Credits deducted for user ${userId}`);
+            next(); // ✅ Move to the next middleware (uploadDocument)
+        });
+    });
+};
 
 
 //request credits
