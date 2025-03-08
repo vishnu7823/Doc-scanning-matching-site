@@ -49,3 +49,9 @@ jest/
 
 # TypeScript-related
 *.tsbuildinfo
+
+
+#ignored files
+./src/data/database.sqlite
+./public/uploads
+./admin.js
