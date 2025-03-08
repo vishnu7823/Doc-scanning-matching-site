@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public")); 
 
-//rroutes
+//routes
 
 
 app.use('/api/auth',routes);
@@ -29,15 +29,15 @@ app.use('/api/admin',adminRoutes);
 
 
 app.get('/',(req,res)=>{
-    res.send("hello")
+    res.sendFile(path.join(__dirname, './Frontend/index.html'));
 
 })
 
 //reset credits every midnight
 cron.schedule("0 0 * * *", resetDailycredits);
 
-app.use("/admin",express.static(path.join(__dirname,"./adminPanel")));
-app.use("/", express.static(path.join(__dirname, "../Frontend/pages/login.html")));
+app.use(express.static(path.join(__dirname, './Frontend')));
+// app.use("/", express.static(path.join(__dirname, "../Frontend/index.html")));
 
 app.listen(process.env.PORT,()=>{
     console.log(`server is connected to ${process.env.PORT}`);
