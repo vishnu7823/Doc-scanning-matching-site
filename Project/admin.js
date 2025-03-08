@@ -16,7 +16,7 @@ bcrypt.hash(plainPassword, 10, (err, hash) => {
         if (err) {
             console.error("Error updating admin password:", err);
         } else {
-            console.log("✅ Admin password updated successfully.");
+            console.log("Admin password updated successfully.");
         }
         db.close();
     });

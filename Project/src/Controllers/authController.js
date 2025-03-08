@@ -37,12 +37,12 @@ const userlogin = async(req,res)=>{
         `SELECT * FROM users WHERE username=?`, [username],
         function(err,user){
             if(err || !user){
-                return res.status(400).json({message:"Invalid username"})  //check the userna,e is valid
+                return res.status(400).json({message:"Invalid username"})  //check the username is valid
             }
 
             const isValid =  bcrypt.compare(password,user.password);
             if(!isValid){
-                return res.status(400).json({message:'invalid password'}) //check the pass is valid
+                return res.status(400).json({message:'invalid password'}) //check the password  is valid
             }
 
             const token = jwt.sign({id:user.id,username:user.username,role: user.role},SECRET_KEY,{expiresIn:"24h"}); //if both are valid creates a JWT token for login autheication and authorization

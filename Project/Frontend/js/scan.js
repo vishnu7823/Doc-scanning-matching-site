@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const fileInput = document.getElementById("document");
     const matchResults = document.getElementById("matchResults");
 
-    // ✅ Prevent duplicate event listeners
-    uploadForm?.removeEventListener("submit", handleFileUpload);
-    uploadForm?.addEventListener("submit", handleFileUpload);
+    if (uploadForm) {
+        uploadForm.addEventListener("submit", handleFileUpload, { once: true });  //this is for only single file execute happen prevent duplicate event
+    }
 
     async function handleFileUpload(e) {
         e.preventDefault();
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         matchResults.innerHTML = "<p>Uploading & Scanning... Please wait.</p>";
 
         const formData = new FormData();
-        formData.append("document", fileInput.files[0]); // ✅ Ensure field name matches multer config
+        formData.append("document", fileInput.files[0]);  
 
         try {
             // **Step 1: Upload Document**
@@ -45,7 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("File uploaded successfully!");
             console.log("Uploaded Document ID:", uploadData.id);
 
-            // **Step 2: Call AI Matching API**
+          
+            await fetchUserProfile();
+            await fetchPastScans();
+
+            // Step 2 call AI matching API
             const documentId = uploadData.id;
             const matchResponse = await fetch(`http://localhost:8000/api/documents/match/${documentId}`, {
                 method: "GET",
@@ -53,9 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const matchData = await matchResponse.json();
-            console.log("Full Matching Results:", matchData); // ✅ Log Full Response
+            console.log("Full Matching Results:", matchData);  // ✅ Log Full Response
 
-            // ✅ Handle AI Response Correctly
+           
             if (!matchResponse.ok || !matchData.matches) {
                 alert("No similar documents found.");
                 matchResults.innerHTML = "<p>No matching documents found.</p>";
@@ -68,13 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let aiResponse = "";
 
             if (Array.isArray(matchData.matches)) {
-                // If matches is an array, extract text
                 aiResponse = matchData.matches.map(match => `<li>${match}</li>`).join("");
             } else if (matchData.matches?.parts) {
-                // If matches contains AI response parts, extract text
                 aiResponse = matchData.matches.parts.map(part => `<li>${part.text}</li>`).join("");
             } else if (typeof matchData.matches === "string") {
-                // If matches is a string
                 aiResponse = `<li>${matchData.matches}</li>`;
             } else {
                 aiResponse = "<li>No valid response from AI</li>";

@@ -1,3 +1,5 @@
+//function for user authentication
+
 const API_BASE_URL = "http://localhost:8000/api/auth";
 
 document.getElementById("loginForm")?.addEventListener("submit", async (e) => {

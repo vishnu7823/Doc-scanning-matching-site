@@ -3,7 +3,7 @@ const db  = require('../Config/db');
 const { userlogin } = require('./authController');
 
 
-//reduce credit per scan
+//reduce credit per scan for user profile
 const reduceCredits = (req, res, next) => {
     const userId = req.user.id;
 
@@ -21,13 +21,13 @@ const reduceCredits = (req, res, next) => {
                 return res.status(500).json({ message: "Failed to reduce credits" });
             }
             console.log(`Credits deducted for user ${userId}`);
-            next(); // ✅ Move to the next middleware (uploadDocument)
+            next(); // Move to the next middleware (uploadDocument)
         });
     });
 };
 
 
-//request credits
+//request credits for user
 const requestCredits  =async(req,res)=>{
 
     const userId = req.user.id;
@@ -54,74 +54,84 @@ const requestCredits  =async(req,res)=>{
 
 //approval/deny of request fro admin
 
-const processCreditrequests = async(req,res)=>{
-
-    const {requestId,status} = req.body;
+const processCreditrequests = async (req, res) => {
+    const { requestId, status } = req.body;
 
     if (!["approved", "denied"].includes(status)) {
         return res.status(400).json({ message: "Invalid status" });
     }
 
-    db.get(`SELECT * FROM credit_requests WHERE id=?`,[requestId],(err,request)=>{
-        if (err || !request) {
-            console.error(" Error fetching credit request:", err);
-            return res.status(404).json({ message: "Request not found" });
-        }
+    // Get credit request along with username
+    db.get(
+        `SELECT credit_requests.*, users.username 
+         FROM credit_requests 
+         JOIN users ON credit_requests.user_id = users.id 
+         WHERE credit_requests.id = ?`,
+        [requestId],
+        (err, request) => {
+            if (err || !request) {
+                console.error("Error fetching credit request:", err);
+                return res.status(404).json({ message: "Request not found" });
+            }
 
+            if (status === "approved") {
+                db.run(
+                    `UPDATE users SET credits = credits + ? WHERE id = ?`,
+                    [request.amount, request.user_id],
+                    (err) => {
+                        if (err) {
+                            console.error("Error updating user credits:", err);
+                            return res.status(500).json({ message: "Failed to update credits" });
+                        }
 
-        if (status === "approved") {
-            db.run(
-                `UPDATE users SET credits = credits + ? WHERE id = ?`,
-                [request.amount, request.user_id],
-                (err) => {
-                    if (err) {
-                        console.error("Error updating user credits:", err);
-                        return res.status(500).json({ message: "Failed to update credits" });
+                        db.run(
+                            `UPDATE credit_requests SET status = 'approved' WHERE id = ?`,
+                            [requestId],
+                            (err) => {
+                                if (err) {
+                                    console.error("Error updating credit request status:", err);
+                                    return res.status(500).json({ message: "Failed to update request status" });
+                                }
+                                res.json({ message: `Credit request approved for ${request.username}` });
+                            }
+                        );
                     }
-
-                    db.run(
-                        `UPDATE credit_requests SET status = 'approved' WHERE id = ?`,
-                        [requestId]
-                    );
-                    if (err) {
-                        console.error(" Error updating credit request status:", err);
-                        return res.status(500).json({ message: "Failed to update request status" });
-                    }
-
-                    res.json({ message: "Credit request approved" });
-                }
-            );
-        } else {
-            db.run(
-                `UPDATE credit_requests SET status = 'denied' WHERE id = ?`,
-                [requestId],
-                (err) => {
-                    if (err)
-                        {
+                );
+            } else {
+                db.run(
+                    `UPDATE credit_requests SET status = 'denied' WHERE id = ?`,
+                    [requestId],
+                    (err) => {
+                        if (err) {
                             console.error("Error updating request status:", err);
                             return res.status(500).json({ message: "Failed to deny request" });
-                }
-
-                    res.json({ message: "Credit request denied" });
-                }
-            );
+                        }
+                        res.json({ message: `Credit request denied for ${request.username}` });
+                    }
+                );
+            }
         }
+    );
+};
 
-    })
-
-}
-
-const getallCredits = (req,res)=>{
-    db.all(`SELECT * FROM credit_requests WHERE status = 'pending'`,[],(err,request)=>{
-        if (err) {
-            console.error(" Database Error:", err);
-            return res.status(500).json({ message: "Error fetching requests" });
-            
+//this is for adminanalytics dashboard
+const getallCredits = (req, res) => {
+    db.all(
+        `SELECT credit_requests.id, credit_requests.user_id, credit_requests.amount, credit_requests.status, users.username 
+         FROM credit_requests 
+         JOIN users ON credit_requests.user_id = users.id 
+         WHERE credit_requests.status = 'pending'`,
+        [],
+        (err, requests) => {
+            if (err) {
+                console.error("Database Error:", err);
+                return res.status(500).json({ message: "Error fetching requests" });
+            }
+            res.json({ request: requests });
         }
-        res.json({request});
-    })
+    );
+};
 
-}
 
 //daily credit reset
 

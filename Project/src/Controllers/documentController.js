@@ -24,7 +24,7 @@ const uploadDocument = async(req,res)=>{
             return res.status(500).json({ message: "Error reading file" });
         }
     
-//store in the DB
+//store in the db
         db.run(
             `INSERT INTO documents (user_id,filename,content) VALUES (?,?,?)`,
             [userid,req.file.filename,content],
@@ -52,7 +52,7 @@ const uploadDocument = async(req,res)=>{
 
 
 
-const matchDocumentAPI = async (req, res) => {  // ✅ Renamed Function
+const matchDocumentAPI = async (req, res) => {  
     const docId = req.params.docId;
 
     db.get(`SELECT content FROM documents WHERE id = ?`, [docId], async (err, doc) => {
@@ -69,7 +69,7 @@ const matchDocumentAPI = async (req, res) => {  // ✅ Renamed Function
             const storedDocs = docs.map(d => d.content);
             console.log("Stored Documents for Matching:", storedDocs);
 
-            // **Use AI to Find the Most Similar Document**
+            // use AI to find the most similar document
             const result = await matchDocuments(doc.content, storedDocs);
             console.log("Matching Results:", result);
 

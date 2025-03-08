@@ -1,3 +1,5 @@
+
+//function for credit requests by users 
 const token = localStorage.getItem("token");
 if (!token) {
     window.location.href = "index.html";

@@ -1,35 +1,87 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fa;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+.container {
+    max-width: 1200px;
+    width: 90%;
+    max-height: 95vh;
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
-th {
-    background-color: #007bff;
+/* Headings */
+h2 { color: #2b6cb0; font-size: 28px; margin-bottom: 15px; }
+h3 { color: #4a5568; font-size: 20px; margin: 15px 0 10px; display: flex; align-items: center; }
+h3 .icon { margin-right: 6px; color: #2b6cb0; font-size: 18px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+th, td { padding: 10px; text-align: left; }
+th { background: #edf2f7; color: #2b6cb0; font-weight: 600; font-size: 14px; }
+th .icon { margin-right: 4px; font-size: 14px; }
+td { border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+
+/* Action Buttons */
+.action-btn {
+    background: #2b6cb0;
     color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-button {
-    padding: 5px 10px;
-    margin: 5px;
-    background-color: #28a745;
-    color: white;
+    padding: 4px 8px;
     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 6px; /* Gap between buttons */
+    width: fit-content; /* Fit content width */
+    display: flex;
+    align-items: center;
+}
+
+.action-btn.deny { background: #e53e3e; width: 50px;}
+.action-btn .icon { margin-right: 4px; font-size: 12px; }
+.action-btn:last-child { margin-right: 0; } /* Remove margin from last button */
+
+/* Logout Button */
+button {
+    background: #2b6cb0;
+    color: white;
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    width: 100px;
 }
 
-button.deny {
-    background-color: #dc3545;
+button .icon { margin-right: 4px; font-size: 14px; }
+
+.footer {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #718096;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container { padding: 10px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 18px; }
+    th, td { padding: 8px; font-size: 12px; }
+    .action-btn, button { font-size: 12px; padding: 6px 8px; width: fit-content; }
 }

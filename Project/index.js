@@ -37,7 +37,7 @@ app.get('/',(req,res)=>{
 cron.schedule("0 0 * * *", resetDailycredits);
 
 app.use(express.static(path.join(__dirname, './Frontend')));
-// app.use("/", express.static(path.join(__dirname, "../Frontend/index.html")));
+
 
 app.listen(process.env.PORT,()=>{
     console.log(`server is connected to ${process.env.PORT}`);

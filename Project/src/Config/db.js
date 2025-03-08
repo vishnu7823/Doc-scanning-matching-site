@@ -30,7 +30,7 @@ db.run(
     user_id INTEGER,
     filename TEXT,
     content TEXT,
-    FOREIGN KEY (user_id) REFERENCES  users(id)
+    FOREIGN KEY (user_id) REFERENCES  users(id) ON DELETE CASCADE
 
     )`
 )
@@ -43,7 +43,7 @@ db.run(
         user_id INTEGER,
         amount INTEGER,
         status TEXT DEFAULT 'pending',
-        FOREIGN KEY (user_id) REFERENCES users(id)
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     )`
 );
 module.exports = db;
