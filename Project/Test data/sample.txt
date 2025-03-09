@@ -1,0 +1,6 @@
+#admin
+username = admin
+password = admin123
+
+# users
+for users you can register with register form
