@@ -1,13 +1,13 @@
-/* General Page Styling */
+
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #f4f7fa, #e2e8f0); /* Subtle blue-gray gradient */
+    background: linear-gradient(135deg, #f4f7fa, #e2e8f0); 
     margin: 0;
     padding: 20px;
-    color: #2d3748; /* Dark slate gray text */
+    color: #2d3748; 
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure footer stays at bottom */
+    min-height: 100vh; 
 }
 
 .container {
@@ -17,12 +17,12 @@ body {
     padding: 30px;
     margin: auto;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); /* Softer shadow for depth */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); 
     text-align: center;
 }
 
 h1 {
-    color: #2b6cb0; /* Professional blue for main heading */
+    color: #2b6cb0; 
     font-size: 24px;
     margin-bottom: 10px;
     font-weight: 600;
@@ -43,7 +43,7 @@ form {
 /* Form Styling */
 .form-group {
     position: relative;
-    text-align: left; /* Align labels and inputs to the left */
+    text-align: left; 
 }
 
 .form-group label {
@@ -51,7 +51,7 @@ form {
     margin-bottom: 6px;
     font-size: 14px;
     font-weight: 500;
-    color: #4a5568; /* Medium gray-blue for labels */
+    color: #4a5568; 
 }
 
 .input-wrapper {
@@ -60,19 +60,19 @@ form {
 
 input {
     width: 100%;
-    padding: 12px 15px 12px 40px; /* Extra padding for icon */
-    border: 1px solid #e2e8f0; /* Light gray border */
+    padding: 12px 15px 12px 40px;
+    border: 1px solid #e2e8f0; 
     border-radius: 5px;
     font-size: 16px;
-    background-color: #f7fafc; /* Very light blue-gray input background */
+    background-color: #f7fafc; 
     color: #2d3748;
     transition: border-color 0.2s, box-shadow 0.2s;
     width: 80%;
 }
 
 input:focus {
-    border-color: #2b6cb0; /* Blue focus state */
-    box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.15); /* Subtle blue halo */
+    border-color: #2b6cb0; 
+    box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.15); 
     outline: none;
    
 }
@@ -82,12 +82,12 @@ input:focus {
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: #4a5568; /* Match label color */
+    color: #4a5568; 
     font-size: 16px;
 }
 
 button {
-    background: #2b6cb0; /* Professional blue button */
+    background: #2b6cb0; 
     color: white;
     padding: 12px;
     border: none;
@@ -100,7 +100,7 @@ button {
 }
 
 button:hover {
-    background: #2c5282; /* Darker blue on hover */
+    background: #2c5282; 
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
@@ -113,19 +113,19 @@ button:active {
 a {
     display: inline-block;
     margin-top: 10px;
-    color: #2b6cb0; /* Professional blue for links */
+    color: #2b6cb0; 
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #2c5282; /* Darker blue on hover */
+    color: #2c5282; 
     text-decoration: underline;
 }
 
 .icon-inline {
-    margin-right: 8px; /* Space between icon and text */
+    margin-right: 8px; 
 }
 
 /* Footer Styling */
@@ -133,11 +133,11 @@ a:hover {
     margin-top: auto;
     padding: 10px 0;
     font-size: 12px;
-    color: #718096; /* Lighter gray for footer */
+    color: #718096; 
     text-align: center;
 }
 
-/* Responsive Adjustments */
+/* Responsive design */
 @media (max-width: 600px) {
     .container {
         padding: 20px;

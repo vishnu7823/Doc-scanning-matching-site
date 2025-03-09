@@ -1,4 +1,4 @@
-/* General Page Styling */
+
 body {
     font-family: Arial, sans-serif;
     background: #f4f7fa;
@@ -43,15 +43,15 @@ td { border-bottom: 1px solid #e2e8f0; font-size: 14px; }
     border-radius: 4px;
     cursor: pointer;
     font-size: 12px;
-    margin-right: 6px; /* Gap between buttons */
-    width: fit-content; /* Fit content width */
+    margin-right: 6px; 
+    width: fit-content;
     display: flex;
     align-items: center;
 }
 
 .action-btn.deny { background: #e53e3e; width: 50px;}
 .action-btn .icon { margin-right: 4px; font-size: 12px; }
-.action-btn:last-child { margin-right: 0; } /* Remove margin from last button */
+.action-btn:last-child { margin-right: 0; }
 
 /* Logout Button */
 button {
@@ -77,7 +77,7 @@ button .icon { margin-right: 4px; font-size: 14px; }
     text-align: center;
 }
 
-/* Responsive Adjustments */
+/* Responsive design*/
 @media (max-width: 768px) {
     .container { padding: 10px; }
     h2 { font-size: 24px; }

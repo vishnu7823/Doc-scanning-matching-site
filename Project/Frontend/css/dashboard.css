@@ -1,4 +1,4 @@
-/* General Page Styling */
+
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #f4f7fa, #e2e8f0);
@@ -81,7 +81,7 @@ body {
 
 .card h3 {
     color: #4a5568;
-    font-size: 18px; /* Increased from 16px */
+    font-size: 18px; 
     margin-bottom: 4px;
     display: flex;
     align-items: center;
@@ -90,11 +90,11 @@ body {
 .card h3 .icon {
     margin-right: 4px;
     color: #2b6cb0;
-    font-size: 18px; /* Increased from 16px */
+    font-size: 18px; 
 }
 
 p {
-    font-size: 16px; /* Increased from 14px */
+    font-size: 16px; 
     margin-bottom: 2px;
 }
 
@@ -114,7 +114,7 @@ input[type="file"] {
     padding: 4px 4px 4px 20px;
     border: 1px solid #e2e8f0;
     border-radius: 4px;
-    font-size: 16px; /* Increased from 14px */
+    font-size: 16px; 
     background: #fff;
     color: #2d3748;
     box-sizing: border-box;
@@ -131,7 +131,7 @@ input[type="file"]:focus {
     top: 50%;
     transform: translateY(-50%);
     color: #4a5568;
-    font-size: 16px; /* Increased from 14px */
+    font-size: 16px; 
 }
 
 button {
@@ -141,7 +141,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px; /* Increased from 14px */
+    font-size: 16px; 
 }
 
 ul {
@@ -155,17 +155,17 @@ ul {
 ul li {
     background: #edf2f7;
     margin: 2px 0;
-    padding: 6px; /* Increased padding for better readability */
+    padding: 6px; 
     border-radius: 4px;
     color: #2d3748;
-    font-size: 16px; /* Increased from 12px to match other text */
+    font-size: 16px; 
 }
 
 .link-btn {
     margin-top: 4px;
     color: #2b6cb0;
     text-decoration: none;
-    font-size: 16px; /* Increased from 14px */
+    font-size: 16px; 
     padding: 4px 6px;
     border: 1px solid #2b6cb0;
     border-radius: 4px;
@@ -178,12 +178,12 @@ ul li {
 
 .footer {
     margin-top: 8px;
-    font-size: 14px; /* Increased from 12px */
+    font-size: 14px; 
     color: #718096;
     text-align: center;
 }
 
-/* Responsive Adjustments */
+/* Responsive design */
 @media (max-width: 768px) {
     .container { padding: 8px; max-height: 95vh; }
     .dashboard-grid { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto auto; }

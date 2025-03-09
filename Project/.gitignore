@@ -51,7 +51,12 @@ jest/
 *.tsbuildinfo
 
 
-#ignored files
-./src/data/database.sqlite
-./public/uploads
-./admin.js
+
+# Ignore SQLite database file
+/src/data/database.sqlite
+
+# Ignore hashed password script
+/src/adminpasshash.js
+
+# Ignore uploaded files
+/public/uploads/
