@@ -20,7 +20,7 @@ const corsOptions = {
     'http://localhost:5500',
     'http://127.0.0.1:5500',
     'http://localhost:8000',
-    'https://your-frontend-domain.com', // Add your production frontend URL here
+    'https://doc-scanning-matching-site.onrender.com', // Add your production frontend URL here
     'file://' // For local HTML files
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
