@@ -6,10 +6,10 @@ const cors = require('cors');
 dotenv.config();
 
 // Import route files (adjust paths based on your actual file structure)
-const authRoutes = require('./authRoutes'); // Updated path
-const documentRoutes = require('./documentRoutes'); // Updated path  
-const creditsRoutes = require('./creditRoutes'); // Updated path
-const adminRoutes = require('./adminRoutes'); // Updated path
+const authRoutes = require('./src/routes/authRoutes'); // Updated path
+const documentRoutes = require('./src/routes/documentRoutes'); // Updated path  
+const creditsRoutes = require('./src/routes/creditRoutes'); // Updated path
+const adminRoutes = require('./src/routes/adminRoutes'); // Updated path
 
 // Enhanced CORS configuration
 const corsOptions = {
