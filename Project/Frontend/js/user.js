@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function fetchUserProfile() {
-    const response = await fetch("http://localhost:8000/api/auth/profile", {
+    const response = await fetch("https://doc-scanning-matching-site.onrender.com/api/auth/profile", {
         headers: { Authorization: `Bearer ${token}` }
     });
     const data = await response.json();
@@ -24,7 +24,7 @@ async function fetchUserProfile() {
 
 // ✅ Keep only ONE version of fetchPastScans()
 async function fetchPastScans() {
-    const response = await fetch("http://localhost:8000/api/documents/history", {
+    const response = await fetch("https://doc-scanning-matching-site.onrender.com/api/documents/history", {
         headers: { Authorization: `Bearer ${token}` }
     });
 

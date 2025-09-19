@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             // **Step 1: Upload Document**
-            const uploadResponse = await fetch("http://localhost:8000/api/documents/upload", {
+            const uploadResponse = await fetch("https://doc-scanning-matching-site.onrender.com/api/documents/upload", {
                 method: "POST",
                 headers: { Authorization: `Bearer ${token}` },
                 body: formData
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Step 2 call AI matching API
             const documentId = uploadData.id;
-            const matchResponse = await fetch(`http://localhost:8000/api/documents/match/${documentId}`, {
+            const matchResponse = await fetch(`https://doc-scanning-matching-site.onrender.com/api/documents/match/${documentId}`, {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` }
             });

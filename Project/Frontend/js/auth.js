@@ -1,6 +1,6 @@
 //function for user authentication
 
-const API_BASE_URL = "http://localhost:8000/api/auth";
+const API_BASE_URL = "https://doc-scanning-matching-site.onrender.com/api/auth";
 
 document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();

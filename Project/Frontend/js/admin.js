@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function fetchCreditRequests() {
     try {
-        const response = await fetch("http://localhost:8000/api/credits/balance", {
+        const response = await fetch("https://doc-scanning-matching-site.onrender.com/api/credits/balance", {
             headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -51,7 +51,7 @@ async function fetchCreditRequests() {
 
 async function fetchUserAnalytics() {
     try {
-        const response = await fetch("http://localhost:8000/api/admin/analytics", {
+        const response = await fetch("https://doc-scanning-matching-site.onrender.com/api/admin/analytics", {
             headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -86,7 +86,7 @@ async function fetchUserAnalytics() {
 
 
 async function processCredit(requestId, status) {
-    const response = await fetch("http://localhost:8000/api/credits/process", {
+    const response = await fetch("https://doc-scanning-matching-site.onrender.com/api/credits/process", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ requestId, status })

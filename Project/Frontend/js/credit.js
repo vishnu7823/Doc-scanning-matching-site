@@ -9,7 +9,7 @@ document.getElementById("creditRequestForm")?.addEventListener("submit", async (
     e.preventDefault();
     const amount = document.getElementById("creditAmount").value;
     
-    const response = await fetch("http://localhost:8000/api/credits/request", {
+    const response = await fetch("https://doc-scanning-matching-site.onrender.com/api/credits/request", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
