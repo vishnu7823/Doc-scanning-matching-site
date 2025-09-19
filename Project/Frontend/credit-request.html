@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Credits</title>
-    <link rel="stylesheet" href="css/credits.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Credits</title>
+  <link rel="stylesheet" href="css/credits.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Request Additional Credits</h1>
-        <p>Use this form to request more credits for your account.</p>
-        
-        <form id="creditRequestForm">
-            <div class="form-group">
-                <label for="creditAmount">Credit Amount</label>
-                <div class="input-wrapper">
-                    <i class="fas fa-coins icon"></i>
-                    <input type="number" id="creditAmount" min="1" placeholder="Enter amount" required>
-                </div>
-            </div>
-            <button type="submit">Request Credits</button>
-        </form>
-        
-        <a href="user-dashboard.html"><i class="fas fa-arrow-left icon-inline"></i> Back to Dashboard</a>
-    </div>
-    
-    <footer class="footer">
-        <p> All rights reserved.</p>
-    </footer>
-    
-    <script src="js/credit.js"></script>
+  <div class="container">
+    <h1>Request Additional Credits</h1>
+    <p>Use this form to request more credits for your account.</p>
+
+    <form id="creditRequestForm">
+      <div class="form-group">
+        <label for="creditAmount">Credit Amount</label>
+        <div class="input-wrapper">
+          <i class="fas fa-coins icon"></i>
+          <input type="number" id="creditAmount" min="1" placeholder="Enter amount" required>
+        </div>
+      </div>
+      <button type="submit">Request Credits</button>
+    </form>
+
+    <a href="user-dashboard.html"><i class="fas fa-arrow-left icon-inline"></i> Back to Dashboard</a>
+  </div>
+
+  <footer class="footer">
+    <p> All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="js/credit.js"></script>
 </body>
 </html>

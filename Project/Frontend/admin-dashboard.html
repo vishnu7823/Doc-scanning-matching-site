@@ -1,66 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/admin.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Admin Dashboard</h2>
-        <h3><i class="fas fa-coins icon"></i> Credit Requests</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th><i class="fas fa-user icon"></i> Username</th>
-                    <th><i class="fas fa-money-bill-wave icon"></i> Amount</th>
-                    <th><i class="fas fa-info-circle icon"></i> Status</th>
-                    <th><i class="fas fa-cog icon"></i> Action</th>
-                </tr>
-            </thead>
-            <tbody id="creditRequests">
-                <tr>
-                    <td>User1</td>
-                    <td>100</td>
-                    <td>Pending</td>
-                    <td>
-                        <button class="action-btn approve"><i class="fas fa-check"></i> Approve</button>
-                        <button class="action-btn deny"><i class="fas fa-times"></i> Deny</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <h3><i class="fas fa-chart-bar icon"></i> User Analytics</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th><i class="fas fa-user icon"></i> Username</th>
-                    <th><i class="fas fa-file-alt icon"></i> Total Scans</th>
-                    <th><i class="fas fa-coins icon"></i> Credits</th>
-                </tr>
-            </thead>
-            <tbody id="userStats"></tbody>
-        </table>
-        
-        <button onclick="logout()"><i class="fas fa-sign-out-alt icon"></i> Logout</button>
+  <div class="container">
+    <h2>Admin Dashboard</h2>
+    <h3><i class="fas fa-coins icon"></i> Credit Requests</h3>
+    <table>
+      <thead>
+        <tr>
+          <th><i class="fas fa-user icon"></i> Username</th>
+          <th><i class="fas fa-money-bill-wave icon"></i> Amount</th>
+          <th><i class="fas fa-info-circle icon"></i> Status</th>
+          <th><i class="fas fa-cog icon"></i> Action</th>
+        </tr>
+      </thead>
+      <tbody id="creditRequests"></tbody>
+    </table>
 
-        <footer class="footer">
-            <p>© All Rights reserved.</p>
-        </footer>
-    </div>
-    
-    <script src="js/auth.js"></script>
-    <script>
-        function logout() {
-            localStorage.removeItem("token");
-            localStorage.removeItem("role");
-            window.location.href = "index.html";
-        }
-    </script>
-    <script src="js/admin.js"></script>
+    <h3><i class="fas fa-chart-bar icon"></i> User Analytics</h3>
+    <table>
+      <thead>
+        <tr>
+          <th><i class="fas fa-user icon"></i> Username</th>
+          <th><i class="fas fa-file-alt icon"></i> Total Scans</th>
+          <th><i class="fas fa-coins icon"></i> Credits</th>
+        </tr>
+      </thead>
+      <tbody id="userStats"></tbody>
+    </table>
+
+    <button onclick="logout()"><i class="fas fa-sign-out-alt icon"></i> Logout</button>
+
+    <footer class="footer">
+      <p>© All Rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      window.location.href = "index.html";
+    }
+  </script>
+  <script type="module" src="js/admin.js"></script>
 </body>
 </html>

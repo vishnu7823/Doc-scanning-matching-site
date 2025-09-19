@@ -1,72 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard | Document Scanning System</title>
-    <link rel="stylesheet" href="css/dashboard.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard | Document Scanning System</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>Welcome, <span id="username"></span></h1>
-            <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
-        </header>
+  <div class="container">
+    <header class="header">
+      <h1>Welcome, <span id="username"></span></h1>
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </header>
 
-        <div class="dashboard-grid">
-            <!-- Userprofile card -->
-            <div class="card user-info">
-                <h3><i class="fas fa-user icon"></i> User Profile</h3>
-                <p><strong>Role:</strong> <span id="role"></span></p>
-                <p><strong>Credits:</strong> <span id="credits"></span></p>
-            </div>
+    <div class="dashboard-grid">
+      <div class="card user-info">
+        <h3><i class="fas fa-user icon"></i> User Profile</h3>
+        <p><strong>Role:</strong> <span id="role"></span></p>
+        <p><strong>Credits:</strong> <span id="credits"></span></p>
+      </div>
 
-            <!-- upload documentcard -->
-            <div class="card upload-doc">
-                <h3><i class="fas fa-upload icon"></i> Upload Document for Scanning</h3>
-                <form id="uploadForm" enctype="multipart/form-data">
-                    <div class="input-wrapper">
-                        <i class="fas fa-file-alt icon"></i>
-                        <input type="file" id="document" accept=".txt" required>
-                    </div>
-                    <button type="submit">Upload & Scan</button>
-                </form>
-            </div>
+      <div class="card upload-doc">
+        <h3><i class="fas fa-upload icon"></i> Upload Document for Scanning</h3>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <div class="input-wrapper">
+            <i class="fas fa-file-alt icon"></i>
+            <input type="file" id="document" accept=".txt" required>
+          </div>
+          <button type="submit">Upload & Scan</button>
+        </form>
+      </div>
 
-            <!-- matchingresultscard -->
-            <div class="card matching-results">
-                <h3><i class="fas fa-list icon"></i> Matching Results</h3>
-                <ul id="matchResults"></ul>
-            </div>
+      <div class="card matching-results">
+        <h3><i class="fas fa-list icon"></i> Matching Results</h3>
+        <ul id="matchResults"></ul>
+      </div>
 
-            <!-- Past Scans Card -->
-            <div class="card past-scans">
-                <h3><i class="fas fa-history icon"></i> Past Scans</h3>
-                <ul id="scanHistory"></ul>
-            </div>
+      <div class="card past-scans">
+        <h3><i class="fas fa-history icon"></i> Past Scans</h3>
+        <ul id="scanHistory"></ul>
+      </div>
 
-            <!-- creditrequestscard -->
-            <div class="card credit-requests">
-                <h3><i class="fas fa-coins icon"></i> Credit Requests</h3>
-                <a href="credit-request.html" class="link-btn">Request More Credits</a>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <p>© All Rights reserved.</p>
-        </footer>
+      <div class="card credit-requests">
+        <h3><i class="fas fa-coins icon"></i> Credit Requests</h3>
+        <a href="credit-request.html" class="link-btn">Request More Credits</a>
+      </div>
     </div>
 
-    <script src="js/user.js"></script>
-    <script>
-        function logout() {
-            localStorage.removeItem("token");
-            localStorage.removeItem("role");
-            window.location.href = "index.html";
-        }
-    </script>
-    <script src="js/scan.js"></script>
+    <footer class="footer">
+      <p>© All Rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      window.location.href = "index.html";
+    }
+  </script>
+  <script type="module" src="js/user.js"></script>
+  <script type="module" src="js/scan.js"></script>
 </body>
 </html>
